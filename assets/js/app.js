@@ -142,25 +142,25 @@ d3.csv("assets/data/data.csv", function(err, healthData) {
     .attr("cx", d => xLinearScale(d[chosenXAxis]))
     .attr("cy", d => yLinearScale(d.healthcare))
     .attr("r", 20)
-    .attr("fill", "blue")
-    .attr("opacity", ".5");
+    .attr('class', 'stateCircle');
     
   var textGroup = chartGroup.append("text")
-    .style("text-anchor", "middle")
-    .style("font-size", "12px")
+    // .style("text-anchor", "middle")
+    // .style("font-size", "12px")
     .selectAll("tspan")
     .data(healthData)
     .enter()
     .append("tspan")
-        .attr("x", function(d) {
-            return xLinearScale(d.poverty - 0);
+    .attr("x", function(d) {
+            return xLinearScale(d.poverty);
         })
-        .attr("y", function(d) {
-            return yLinearScale(d.healthcare - 0.2);
+    .attr("y", function(d) {
+            return yLinearScale(d.healthcare - 0.3);
         })
-        .text(function(d) {
-            return d.abbr
-        });
+    .text(function(d) {
+            return d.abbr;
+        })
+    .attr('class', 'stateText');
 
   // Create group for  2 x- axis labels
   var labelsGroup = chartGroup.append("g")
