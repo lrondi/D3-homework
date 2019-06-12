@@ -15,7 +15,7 @@ var height = svgHeight - margin.top - margin.bottom;
 // Create an SVG wrapper, append an SVG group that will hold our chart,
 // and shift the latter by left and top margins.
 var svg = d3
-  .select(".scatter")
+  .select("#scatter")
   .append("svg")
   .attr("width", svgWidth)
   .attr("height", svgHeight);
@@ -65,7 +65,7 @@ function renderCircles(circlesGroup, newXScale, chosenXAxis) {
 // function used for updating circles group with new tooltip
 function updateToolTip(chosenXAxis, circlesGroup) {
 
-  if (chosenXAxis === "povery") {
+  if (chosenXAxis === "poverty") {
     var label = "% in poverty: ";
   }
   else {
@@ -93,7 +93,7 @@ function updateToolTip(chosenXAxis, circlesGroup) {
 }
 
 // Retrieve data from the CSV file and execute everything below
-d3.csv("assets/data/data.csv").then(function(err, healthData) {
+d3.csv("assets/data/data.csv", function(err, healthData) {
   if (err) throw err;
 
   // parse data
