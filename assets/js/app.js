@@ -84,7 +84,7 @@ function renderText (textGroup, newXScale, newYScale, chosenXAxis, chosenYAxis){
   textGroup.transition()
   .duration(1000)
   .attr('x', d => newXScale(d[chosenXAxis]))
-  .attr('y', d => newYScale(d[chosenYAxis]));
+  .attr('y', d => newYScale(d[chosenYAxis]-0.5));
 
   return textGroup;
 }
@@ -178,7 +178,7 @@ d3.csv("assets/data/data.csv", function(err, healthData) {
             return xLinearScale(d[chosenXAxis]);
         })
     .attr("y", function(d) {
-            return yLinearScale(d[chosenYAxis] - 0.3);
+            return yLinearScale(d[chosenYAxis] - 0.5);
         })
     .text(function(d) {
             return d.abbr;
